@@ -17,4 +17,6 @@ public interface PostService {
     Post modifyPost(Long postId, Post post);
 
     Post getPost(Long postId);
+
+    Post getPostByUser(Long userId);
 }

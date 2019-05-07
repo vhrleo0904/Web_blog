@@ -23,7 +23,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> listPost(Long userId) {
         return postRepository.findAllByUserId(userId);
-
     }
 
     @Override
@@ -43,7 +42,6 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post modifyPost(Long postId, Post post) {
-
         return postRepository.findById(postId)
                 .map(p -> {
                     p.setContent(post.getContent() != null ? post.getContent() : p.getContent());
@@ -55,6 +53,13 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post getPost(Long postId) {
         return postRepository.findById(postId)
+                .orElse(null);
+    }
+
+    @Override
+    public Post getPostByUser(Long userId) {
+        return postRepository
+                .findTopByUserIdOrderByIdDesc(userId)
                 .orElse(null);
     }
 }

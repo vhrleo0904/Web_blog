@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
     public User modifyUser(Long userId, User user) {
         return userRepository.findById(userId)
                 .map(u -> {
+
                     u.setProfilePath(user.getProfilePath() != null ? user.getProfilePath() : u.getProfilePath());
                     u.setEmail(user.getEmail() != null ? user.getEmail() : u.getEmail());
                     u.setName(user.getName() != null ? user.getName() : u.getName());
