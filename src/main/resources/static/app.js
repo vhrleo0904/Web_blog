@@ -1,0 +1,8 @@
+$(function () {
+    init();
+})
+
+/*
+let init = () => {
+
+};*/
